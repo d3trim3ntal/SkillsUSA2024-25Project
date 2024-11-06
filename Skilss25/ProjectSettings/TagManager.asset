@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Robot
   - Pickup
+  - Interactable
   layers:
   - Default
   - TransparentFX

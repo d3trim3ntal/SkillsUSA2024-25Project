@@ -14,6 +14,9 @@ public class PlayerAbilities : MonoBehaviour
     // Variables for fixing robots
     public GameObject currentRobot = null;
     public bool currentlyFixing;
+
+    // Variables for interaction
+    public float interactRadius;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,12 @@ public class PlayerAbilities : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        PickupFunctionality();
+        InteractFunctionality();
+    }
+
+    void PickupFunctionality()
     {
         // Press E to pick up and drop things
         if (Input.GetKeyDown(KeyCode.E) && !currentlyFixing)
@@ -45,6 +54,24 @@ public class PlayerAbilities : MonoBehaviour
                 objectHolding.GetComponent<PickupScript>().Dropped(gameObject);
                 currentlyHolding = false;
             }
+        }
+    }
+
+    void InteractFunctionality()
+    {
+        // Press Q to interact with objects like levers
+        if (Input.GetKeyDown(KeyCode.Q) && !currentlyFixing && !currentlyHolding)
+        {
+            GameObject objectInteracting = null;
+            GameObject[] interactables = GameObject.FindGameObjectsWithTag("Interactable");
+            foreach(GameObject i in interactables)
+            {
+                if ((i.transform.position - transform.position).magnitude <= interactRadius)
+                {
+                    objectInteracting = i;
+                }
+            }
+            objectInteracting.GetComponent<InteractTriggerPoint>().Interacted();
         }
     }
 }
