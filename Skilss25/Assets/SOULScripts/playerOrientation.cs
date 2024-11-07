@@ -16,7 +16,7 @@ public class playerOrientation : MonoBehaviour
     public Rigidbody rb;
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
