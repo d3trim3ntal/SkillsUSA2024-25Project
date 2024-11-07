@@ -7,13 +7,15 @@ public class PlayerAbilities : MonoBehaviour
     PlayerMovement playerMoveScript;
 
     // Variables for holding objects
-    private GameObject objectHolding = null;
+    public  GameObject objectHolding = null;
     public float pickupRadius;
     public bool currentlyHolding;
 
     // Variables for fixing robots
     public GameObject currentRobot = null;
     public bool currentlyFixing;
+    // TEMPORARY
+    public GameObject robotUI;
 
     // Variables for interaction
     public float interactRadius;
@@ -28,6 +30,7 @@ public class PlayerAbilities : MonoBehaviour
     {
         PickupFunctionality();
         InteractFunctionality();
+        RobotFunctionality();
     }
 
     void PickupFunctionality()
@@ -37,7 +40,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             if (!currentlyHolding && playerMoveScript.grounded)
             {
-                
+
                 // Detects all pickups within range and essentially chooses one at random to pick up
                 GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup");
                 foreach (GameObject p in pickups)
@@ -53,6 +56,7 @@ public class PlayerAbilities : MonoBehaviour
             else
             {
                 objectHolding.GetComponent<PickupScript>().Dropped(gameObject);
+                objectHolding = null;
                 currentlyHolding = false;
             }
         }
@@ -65,7 +69,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             GameObject objectInteracting = null;
             GameObject[] interactables = GameObject.FindGameObjectsWithTag("Interactable");
-            foreach(GameObject i in interactables)
+            foreach (GameObject i in interactables)
             {
                 if ((i.transform.position - transform.position).magnitude <= interactRadius)
                 {
@@ -73,6 +77,42 @@ public class PlayerAbilities : MonoBehaviour
                 }
             }
             objectInteracting.GetComponent<InteractTriggerPoint>().Interacted();
+        }
+    }
+
+    void RobotFunctionality()
+    {
+        // Hold F to begin fixing robots
+        if (Input.GetKeyDown(KeyCode.F) && !currentlyHolding)
+        {
+            if (!currentlyFixing)
+            {
+                GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
+                foreach (GameObject r in robots)
+                {
+                    if ((r.transform.position - transform.position).magnitude < pickupRadius)
+                    {
+                        currentRobot = r;
+                        if (!currentRobot.GetComponent<RobotScript>().operative)
+                        {
+                            playerMoveScript.currentSpeed = 0;
+                            playerMoveScript.jumpForce = 0;
+                            r.GetComponent<RobotScript>().gettingFixed = true;
+                            currentlyFixing = true;
+                            break;
+                        }
+                    }
+                }
+                robotUI.SetActive(true);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.F) && !currentlyHolding && currentlyFixing)
+        {
+            playerMoveScript.currentSpeed = playerMoveScript.speedInit;
+            playerMoveScript.jumpForce = playerMoveScript.jumpForceInit;
+            currentRobot = null;
+            currentlyFixing = false;
+            robotUI.SetActive(false);
         }
     }
 }

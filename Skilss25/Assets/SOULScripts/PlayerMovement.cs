@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
 
     // Speed and jump power initialization; One to set the initial value, and the other to change during gameplay
     public float speedInit = 5;
-    float currentSpeed = 5;
+    public float currentSpeed = 5;
     public float jumpForceInit = 10;
-    float jumpForce = 10;
+    public float jumpForce = 10;
     public float groundDrag;
 
     //the orientation gameobject to figure out movement direction

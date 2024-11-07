@@ -54,19 +54,25 @@ public class PlatformMovement : MonoBehaviour
     // Sets platform to cycle through nodes going up
     public void GoForward()
     {
-        if (nodeDirection == -1)
+        if (nodeList[currentNode + 1] != null)
         {
-            currentNode++;
+            if (nodeDirection == -1)
+            {
+                currentNode++;
+            }
+            nodeDirection = 1;
         }
-        nodeDirection = 1;
     }
     // Sets platform to cycle through nodes in opposite direction
     public void GoBackward()
     {
-        if (nodeDirection == 1)
+        if (nodeList[currentNode - 1] != null)
         {
-            currentNode--;
+            if (nodeDirection == 1)
+            {
+                currentNode--;
+            }
+            nodeDirection = -1;
         }
-        nodeDirection = -1;
     }
 }

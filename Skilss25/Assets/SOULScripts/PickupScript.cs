@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupScript : MonoBehaviour
 {
+    Rigidbody rb;
     // Whether or not it's picked up and object holding it
     public bool pickedUp;
     GameObject objPicking;
@@ -11,7 +12,7 @@ public class PickupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -26,17 +27,36 @@ public class PickupScript : MonoBehaviour
 
     public void PickedUp(GameObject gamer)
     {
+        // Checks if the object was snatched
+        if (gamer != objPicking && objPicking != null)
+        {
+            if (objPicking.GetComponent<RobotScript>() != null)
+            {
+                objPicking.GetComponent<RobotScript>().currentlyHolding = false;
+                objPicking.GetComponent<RobotScript>().objectHolding = null;
+            }
+            else if (objPicking.GetComponent<PlayerAbilities>() != null)
+            {
+                objPicking.GetComponent<PlayerAbilities>().currentlyHolding = false;
+                objPicking.GetComponent<PlayerAbilities>().objectHolding = null;
+            }
+        }
+        transform.localScale = Vector3.one;
         // Sets the "parent" as the gameobject picking this item up
         objPicking = gamer;
         pickedUp = true;
         GetComponent<BoxCollider>().isTrigger = true;
+        // Prevent downward acceleration
+        rb.useGravity = false;
+
     }
 
     public void Dropped(GameObject gamer)
     {
+        GetComponent<BoxCollider>().isTrigger = false;
         objPicking = null;
         pickedUp = false;
-        GetComponent<BoxCollider>().isTrigger = false;
+        rb.useGravity = true;
     }
 
     void OnCollisionEnter(Collision c)
