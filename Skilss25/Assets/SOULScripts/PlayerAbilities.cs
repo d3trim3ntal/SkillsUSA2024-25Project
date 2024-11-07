@@ -7,7 +7,7 @@ public class PlayerAbilities : MonoBehaviour
     PlayerMovement playerMoveScript;
 
     // Variables for holding objects
-    public GameObject objectHolding = null;
+    private GameObject objectHolding = null;
     public float pickupRadius;
     public bool currentlyHolding;
 
@@ -37,6 +37,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             if (!currentlyHolding && playerMoveScript.grounded)
             {
+                
                 // Detects all pickups within range and essentially chooses one at random to pick up
                 GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup");
                 foreach (GameObject p in pickups)
