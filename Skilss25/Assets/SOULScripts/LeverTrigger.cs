@@ -7,7 +7,7 @@ public class LeverTrigger : MonoBehaviour
     // MeshRenderer connection is just temporary to show what state it's in
     public GameObject connectedObject;
     public bool oneTime = false;
-    public bool oneTimeTriggered = false;
+    bool oneTimeTriggered = false;
     MeshRenderer mesh;
     public int currentState = -1;
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class LeverTrigger : MonoBehaviour
             }
             if (oneTime)
             {
-                mesh.material.color = new Color(0.5f, 0.5f, 0.5f);
+                mesh.material.color = new Color(0.75f, 0.75f, 0.75f);
                 oneTimeTriggered = true;
             }
         }
