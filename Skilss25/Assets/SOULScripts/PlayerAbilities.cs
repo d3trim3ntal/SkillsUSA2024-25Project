@@ -76,7 +76,7 @@ public class PlayerAbilities : MonoBehaviour
                     objectInteracting = i;
                 }
             }
-            objectInteracting.GetComponent<InteractTriggerPoint>().Interacted();
+            objectInteracting.GetComponent<LeverTrigger>().Interacted();
         }
     }
 

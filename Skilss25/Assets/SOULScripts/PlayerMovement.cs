@@ -89,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
                 if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
                 {
                     transform.parent = c.gameObject.transform;
+                    if (c.gameObject.CompareTag("Robot") && horiInput == 0 && vertInput == 0)
+                    {
+                        rb.velocity = c.gameObject.GetComponent<Rigidbody>().velocity;
+                        Debug.Log(c.gameObject.GetComponent<Rigidbody>().velocity);
+                    }
                 }
             }
         }

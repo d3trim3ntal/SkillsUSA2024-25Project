@@ -10,6 +10,7 @@ TagManager:
   - Robot
   - Pickup
   - Interactable
+  - Wall
   layers:
   - Default
   - TransparentFX

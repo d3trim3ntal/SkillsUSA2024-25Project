@@ -17,6 +17,7 @@ public class RobotScript : MonoBehaviour
     public float moveSpeed;
     public bool onTheMove;
     public bool currentlyHolding;
+    public bool collided;
     public GameObject objectHolding;
     GameObject objectToGoTo = null;
 
@@ -103,6 +104,7 @@ public class RobotScript : MonoBehaviour
     void ReadyToGo()
     {
         StartCoroutine(CodeRun());
+        collided = false;
         gettingFixed = false;
         operative = true;
     }
@@ -176,6 +178,13 @@ public class RobotScript : MonoBehaviour
                 StartCoroutine(CodeRun());
                 yield return new WaitForSeconds(0.2f);
             }
+            else if (collided)
+            {
+                onTheMove = false;
+                currentPartRunning = currentSequence.Count;
+                StartCoroutine(CodeRun());
+                yield return new WaitForSeconds(0.2f);
+            }
             else
             {
                 rb.AddRelativeForce(Vector3.forward * moveSpeed, ForceMode.VelocityChange);
@@ -221,6 +230,11 @@ public class RobotScript : MonoBehaviour
         if (c.gameObject.CompareTag("Platform"))
         {
             transform.parent = c.gameObject.transform;
+        }
+
+        if (c.gameObject.CompareTag("Wall"))
+        {
+            collided = true;
         }
     }
 

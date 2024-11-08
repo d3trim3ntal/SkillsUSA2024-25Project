@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 7822439886396931074}
   - component: {fileID: 7822439886396931075}
   - component: {fileID: 7822439886396931100}
-  - component: {fileID: 7822439886396931072}
-  - component: {fileID: 7822439886396931079}
+  - component: {fileID: 3346224987182166954}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Interactable
@@ -99,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7822439886396931072
+--- !u!114 &3346224987182166954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,20 +107,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7822439886396931101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6bc6e8044c780a4dadcacfb23bcdc5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ed07c4e36f5814f8cee8b3b806457d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   connectedObject: {fileID: 0}
+  oneTime: 0
+  oneTimeTriggered: 0
   currentState: -1
---- !u!114 &7822439886396931079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7822439886396931101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b67a3d2bd696544aaa1d34a8ce9153d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

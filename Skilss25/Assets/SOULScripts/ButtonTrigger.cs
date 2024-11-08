@@ -25,13 +25,13 @@ public class ButtonTrigger : MonoBehaviour
         // Checks what object is colliding, then executes similarly to lever
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot"))
         {
-            state = 1;
-            mesh.material.color = (Color.green);
             if (GetComponent<PlatformTrigger>() != null)
             {
                 PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
                 platEvent.DirectionSet(objectConnected, state);
             }
+            state = 1;
+            mesh.material.color = (Color.green);
         }
     }
 

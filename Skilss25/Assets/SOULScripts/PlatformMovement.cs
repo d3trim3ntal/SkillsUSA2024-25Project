@@ -14,6 +14,8 @@ public class PlatformMovement : MonoBehaviour
     // What direction the platform will cycle between nodes and which node it is currently on
     public int nodeDirection = 0;
     public int currentNode = 0;
+    // Whether or not the platform will loop in one direction
+    public bool loopingPlatform;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,12 @@ public class PlatformMovement : MonoBehaviour
         {
             transform.Translate((nodeList[currentNode] - nodeList[currentNode - nodeDirection]) / timeBetweenNodes * Time.deltaTime);
         }
+        // Translates to start node
+        if (nodeDirection == 1 && currentNode == 0 && loopingPlatform)
+        {
+            transform.Translate((startNode - endNode) / timeBetweenNodes * Time.deltaTime);
+        }
+
         // If the platform is close enough to destination
         if ((transform.position - nodeList[currentNode]).magnitude <= distanceLeniency)
         {
@@ -44,9 +52,17 @@ public class PlatformMovement : MonoBehaviour
             }
             else if (currentNode > nodeList.Length - 1)
             {
-                // If already at end node, stay at end node
-                currentNode = nodeList.Length - 1;
-                nodeDirection = 0;
+                if (!loopingPlatform)
+                {
+                    // If already at end node, stay at end node
+                    currentNode = nodeList.Length - 1;
+                    nodeDirection = 0;
+                }
+                else
+                {
+                    // Makes a looping platform go back to the first node
+                    currentNode = 0;
+                }
             }
         }
     }
@@ -54,7 +70,7 @@ public class PlatformMovement : MonoBehaviour
     // Sets platform to cycle through nodes going up
     public void GoForward()
     {
-        if (nodeList[currentNode + 1] != null)
+        if (currentNode + 1 < nodeList.Length || loopingPlatform)
         {
             if (nodeDirection == -1)
             {
@@ -66,13 +82,20 @@ public class PlatformMovement : MonoBehaviour
     // Sets platform to cycle through nodes in opposite direction
     public void GoBackward()
     {
-        if (nodeList[currentNode - 1] != null)
+        if (!loopingPlatform)
         {
-            if (nodeDirection == 1)
+            if (nodeList[currentNode - 1] != null)
             {
-                currentNode--;
+                if (nodeDirection == 1)
+                {
+                    currentNode--;
+                }
+                nodeDirection = -1;
             }
-            nodeDirection = -1;
+        }
+        else
+        {
+            nodeDirection = 0;
         }
     }
 }

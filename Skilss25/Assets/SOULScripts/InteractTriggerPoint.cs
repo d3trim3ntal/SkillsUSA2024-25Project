@@ -31,5 +31,10 @@ public class InteractTriggerPoint : MonoBehaviour
         {
             GetComponent<PlatformTrigger>().DirectionSet(connectedObject, currentState);
         }
+
+        if (GetComponent<CheckpointSet>() != null)
+        {
+            GetComponent<CheckpointSet>().SetPlayerCheckpoint(transform.position);
+        }
     }
 }
