@@ -33,9 +33,7 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = speedInit;
         jumpForce = jumpForceInit;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         //make drag if the player is grounded
         if (grounded)
@@ -46,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-        
+
         // Get inputs
         horiInput = Input.GetAxisRaw("Horizontal");
         vertInput = Input.GetAxisRaw("Vertical");
@@ -57,11 +55,20 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(movementDirection.normalized * speedInit * 10, ForceMode.Force);
         //limit velocity
         Vector3 flat = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if(flat.magnitude > speedInit)
+        if (flat.magnitude > speedInit)
         {
             Vector3 limitedVelocity = flat.normalized * speedInit;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
+        //Adding more down force for gravity
+        if (!grounded)
+        {
+            rb.AddRelativeForce(Physics.gravity * (gravityScale - 1));
+        }
+    }
+    void Update()
+    {
+        
 
 
         // Jumping
@@ -70,11 +77,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * jumpForce, ForceMode.Impulse);
             grounded = false;
         }
-        // Adding more down force for gravity
-        if (!grounded)
-        {
-            rb.AddRelativeForce(Physics.gravity * (gravityScale - 1));
-        }
+        
     }
     void OnCollisionStay(Collision c)
     {
