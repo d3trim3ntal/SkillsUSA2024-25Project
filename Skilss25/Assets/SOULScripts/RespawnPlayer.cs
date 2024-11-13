@@ -22,5 +22,9 @@ public class RespawnPlayer : MonoBehaviour
         {
             c.gameObject.GetComponent<PlayerCheckpointManager>().Respawn();
         }
+        else if (c.gameObject.CompareTag("Pickup"))
+        {
+            c.gameObject.GetComponent<PickupRespawn>().Respawn();
+        }
     }
 }

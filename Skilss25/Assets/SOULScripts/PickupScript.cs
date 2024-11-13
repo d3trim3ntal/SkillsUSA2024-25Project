@@ -41,6 +41,7 @@ public class PickupScript : MonoBehaviour
                 objPicking.GetComponent<PlayerAbilities>().objectHolding = null;
             }
         }
+        transform.parent = null;
         transform.localScale = Vector3.one;
         // Sets the "parent" as the gameobject picking this item up
         objPicking = gamer;

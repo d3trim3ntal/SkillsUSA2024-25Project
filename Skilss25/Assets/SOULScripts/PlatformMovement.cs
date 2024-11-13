@@ -84,7 +84,7 @@ public class PlatformMovement : MonoBehaviour
     {
         if (!loopingPlatform)
         {
-            if (nodeList[currentNode - 1] != null)
+            if (currentNode != 0)
             {
                 if (nodeDirection == 1)
                 {

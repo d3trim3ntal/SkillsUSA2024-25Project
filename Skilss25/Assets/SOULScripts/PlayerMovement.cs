@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rb;
+    Rigidbody rb;
 
     // Speed and jump power initialization; One to set the initial value, and the other to change during gameplay
     public float speedInit = 5;
@@ -68,13 +68,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        
-
-
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rb.AddRelativeForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            grounded = false;
+        }
+
+        if (rb.velocity.y > 0.1f)
+        {
             grounded = false;
         }
         
@@ -92,11 +94,16 @@ public class PlayerMovement : MonoBehaviour
                 if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
                 {
                     transform.parent = c.gameObject.transform;
-                    if (c.gameObject.CompareTag("Robot") && horiInput == 0 && vertInput == 0)
-                    {
-                        rb.velocity = c.gameObject.GetComponent<Rigidbody>().velocity;
-                        Debug.Log(c.gameObject.GetComponent<Rigidbody>().velocity);
-                    }
+                }
+            }
+        }
+        else if (c.gameObject.CompareTag("Wall") && c.gameObject.transform.GetChild(0) != null)
+        {
+            if (c.gameObject.transform.GetChild(0).gameObject.CompareTag("Ground"))
+            {
+                if (Mathf.Abs(rb.velocity.y) < 0.05f)
+                {
+                    grounded = true;
                 }
             }
         }
@@ -108,6 +115,16 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = false;
             transform.parent = null;
+        }
+        else if (c.gameObject.CompareTag("Wall") && c.gameObject.transform.GetChild(0) != null)
+        {
+            if (c.gameObject.transform.GetChild(0).gameObject.CompareTag("Ground"))
+            {
+                if (Mathf.Abs(rb.velocity.y) < 0.05f)
+                {
+                    grounded = true;
+                }
+            }
         }
     }
 

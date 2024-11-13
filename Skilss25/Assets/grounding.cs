@@ -6,23 +6,22 @@ public class grounding : MonoBehaviour
 {
     public PlayerMovement movement;
     public GameObject player;
-    private Rigidbody rb;
-   
+    // private Rigidbody rb;
     void OnCollisionStay(Collision c)
     {
         // Check collision object tag
         if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
         {
             // Check whether or not the player is falling/moving up
-            if (Mathf.Abs(movement.rb.velocity.y) < 0.05f)
-            {
-                movement.grounded = true;
+            //if (Mathf.Abs(movement.rb.velocity.y) < 0.05f)
+            //{
+                //movement.grounded = true;
                 // Make player follow platform or robot while it moves
-                if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
-                {
-                    player.transform.parent = c.gameObject.transform;
-                }
-            }
+                //if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+                //{
+                    //player.transform.parent = c.gameObject.transform;
+                //}
+            //}
         }
     }
 
