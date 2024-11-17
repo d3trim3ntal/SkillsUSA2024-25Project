@@ -12,29 +12,35 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForceInit = 10;
     public float jumpForce = 10;
     public float groundDrag;
+    public float airMultiplier = .4f;
 
     //the orientation gameobject to figure out movement direction
     Vector3 movementDirection;
     public Transform orient;
 
-    // Adjust gravity
-    public float gravityScale = 1;
-
     // Input handling variables
     public float horiInput;
     public float vertInput;
 
-    // Grounded or not
+    // Raycast and grounded variables
     public bool grounded;
-    // Start is called before the first frame update
+    private bool jumpable = true;
+    public float RaycastDist = 2f;
+    public float jumpCooldown = 1f;
+    public LayerMask ground;
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
         currentSpeed = speedInit;
         jumpForce = jumpForceInit;
     }
-    private void FixedUpdate()
+    void Update()
     {
+        // Get inputs
+        horiInput = Input.GetAxisRaw("Horizontal");
+        vertInput = Input.GetAxisRaw("Vertical");
+        grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
         //make drag if the player is grounded
         if (grounded)
         {
@@ -44,15 +50,38 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+        //jump
+        if (Input.GetKey(KeyCode.Space) && grounded && jumpable)
+        {
+            Debug.Log("Jump");
+            jumpable = false;
+            Jump();
+            //start jump cooldown
+            Invoke(nameof(JumpTimer), jumpCooldown);
+        }
+    }
+    private void FixedUpdate()
+    {
+        
 
-        // Get inputs
-        horiInput = Input.GetAxisRaw("Horizontal");
-        vertInput = Input.GetAxisRaw("Vertical");
-        // Keep player horizontal velocity controlled and consistent
-        rb.velocity = Vector3.zero + Vector3.up * rb.velocity.y;
         //get move direction and move 
         movementDirection = orient.forward * vertInput + orient.right * horiInput;
-        rb.AddForce(movementDirection.normalized * speedInit * 10, ForceMode.Force);
+        if (grounded)
+        {
+            rb.AddForce(movementDirection.normalized * currentSpeed * 10, ForceMode.Force);
+        }
+        else
+        {
+            //prevent player from continuing to fly forward if they let go of movement controls while jumping
+            if (horiInput == 0 && vertInput == 0)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            }
+            rb.AddForce(movementDirection.normalized * currentSpeed * 10 * airMultiplier, ForceMode.Force);
+        }
+
+
+
         //limit velocity
         Vector3 flat = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         if (flat.magnitude > speedInit)
@@ -60,72 +89,46 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVelocity = flat.normalized * speedInit;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
-        //Adding more down force for gravity
-        if (!grounded)
-        {
-            rb.AddRelativeForce(Physics.gravity * (gravityScale - 1));
-        }
-    }
-    void Update()
-    {
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        {
-            rb.AddRelativeForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            grounded = false;
-        }
 
-        if (rb.velocity.y > 0.1f)
-        {
-            grounded = false;
-        }
-        
     }
-    void OnCollisionStay(Collision c)
-    {
-        // Check collision object tag
-        if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
-        {
-            // Check whether or not the player is falling/moving up
-            if (Mathf.Abs(rb.velocity.y) < 0.05f)
-            {
-                grounded = true;
-                // Make player follow platform or robot while it moves
-                if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
-                {
-                    transform.parent = c.gameObject.transform;
-                }
-            }
-        }
-        else if (c.gameObject.CompareTag("Wall") && c.gameObject.transform.GetChild(0) != null)
-        {
-            if (c.gameObject.transform.GetChild(0).gameObject.CompareTag("Ground"))
-            {
-                if (Mathf.Abs(rb.velocity.y) < 0.05f)
-                {
-                    grounded = true;
-                }
-            }
-        }
-    }
+    
+    
+   void OnCollisionStay(Collision c)
+   {
+        // Check whether or not the player is falling/moving up
 
-    void OnCollisionExit(Collision c)
-    {
-        if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+        if (Mathf.Abs(rb.velocity.y) < 0.05f)
         {
-            grounded = false;
-            transform.parent = null;
-        }
-        else if (c.gameObject.CompareTag("Wall") && c.gameObject.transform.GetChild(0) != null)
-        {
-            if (c.gameObject.transform.GetChild(0).gameObject.CompareTag("Ground"))
+           
+            // Make player follow platform or robot while it moves
+            if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
             {
-                if (Mathf.Abs(rb.velocity.y) < 0.05f)
-                {
-                    grounded = true;
-                }
+                transform.parent = c.gameObject.transform;
             }
+            
         }
+       
+   }
+
+   void OnCollisionExit(Collision c)
+   {
+       if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+       {
+           transform.parent = null;
+       }
+      
+   }
+       
+
+    void Jump()
+    {
+        rb.velocity = new(rb.velocity.x, 0, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+    //Give a cooldown to the players jump
+    void JumpTimer()
+    {
+        jumpable = true;
     }
 
    

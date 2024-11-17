@@ -22,7 +22,7 @@ public class playerOrientation : MonoBehaviour
     void Update()
     {
         //figure out where the camera is looking
-        Vector3 viewDir = playerObj.position - new Vector3(transform.position.x, playerObj.position.y, transform.position.z);
+        Vector3 viewDir = playerParent.position - new Vector3(transform.position.x, playerParent.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
         float hori = Input.GetAxisRaw("Horizontal");

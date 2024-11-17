@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 855545917906361759}
   - component: {fileID: 855545917906361752}
   - component: {fileID: 855545917906361753}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StationaryPlatform
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2776730279061307484}
   - component: {fileID: 3620594443690164962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grounding
   m_TagString: Ground
   m_Icon: {fileID: 0}

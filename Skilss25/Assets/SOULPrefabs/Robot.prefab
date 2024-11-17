@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6188616868786745918}
   - component: {fileID: 6188616868786745905}
   - component: {fileID: 6188616868786745904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Robot
   m_TagString: Robot
   m_Icon: {fileID: 0}
@@ -139,6 +139,7 @@ MonoBehaviour:
   moveSpeed: 1.2
   onTheMove: 0
   currentlyHolding: 0
+  collided: 0
   objectHolding: {fileID: 0}
 --- !u!199 &6188616868786745905
 ParticleSystemRenderer:

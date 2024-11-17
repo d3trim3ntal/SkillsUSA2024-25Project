@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7822439886396931075}
   - component: {fileID: 7822439886396931100}
   - component: {fileID: 3346224987182166954}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lever
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -112,5 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedObject: {fileID: 0}
   oneTime: 0
-  oneTimeTriggered: 0
   currentState: -1

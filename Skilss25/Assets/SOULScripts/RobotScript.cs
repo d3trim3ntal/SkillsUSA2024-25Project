@@ -199,7 +199,7 @@ public class RobotScript : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         if (objectToGoTo.CompareTag("Pickup"))
         {
-            objectToGoTo.GetComponent<PickupScript>().PickedUp(gameObject);
+            objectToGoTo.GetComponent<PickupScript>().PickedUp(gameObject, gameObject);
             objectHolding = objectToGoTo;
             currentlyHolding = true;
         }

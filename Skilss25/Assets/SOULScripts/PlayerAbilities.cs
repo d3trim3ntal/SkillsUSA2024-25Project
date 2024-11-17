@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAbilities : MonoBehaviour
 {
     PlayerMovement playerMoveScript;
+    public GameObject playerModel;
 
     // Variables for holding objects
     public  GameObject objectHolding = null;
@@ -50,7 +51,7 @@ public class PlayerAbilities : MonoBehaviour
                         objectHolding = p;
                     }
                 }
-                objectHolding.GetComponent<PickupScript>().PickedUp(gameObject);
+                objectHolding.GetComponent<PickupScript>().PickedUp(gameObject, playerModel);
                 currentlyHolding = true;
             }
             else

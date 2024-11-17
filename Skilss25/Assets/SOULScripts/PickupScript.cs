@@ -25,7 +25,7 @@ public class PickupScript : MonoBehaviour
         }
     }
 
-    public void PickedUp(GameObject gamer)
+    public void PickedUp(GameObject gamer, GameObject model)
     {
         // Checks if the object was snatched
         if (gamer != objPicking && objPicking != null)
@@ -43,8 +43,8 @@ public class PickupScript : MonoBehaviour
         }
         transform.parent = null;
         transform.localScale = Vector3.one;
-        // Sets the "parent" as the gameobject picking this item up
-        objPicking = gamer;
+        // Sets the "parent" as the model of gameobject picking this item up
+        objPicking = model;
         pickedUp = true;
         GetComponent<BoxCollider>().isTrigger = true;
         // Prevent downward acceleration
