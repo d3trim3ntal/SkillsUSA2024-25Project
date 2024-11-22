@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         currentSpeed = speedInit;
         jumpForce = jumpForceInit;
+        
     }
     void Update()
     {
@@ -68,16 +69,14 @@ public class PlayerMovement : MonoBehaviour
         movementDirection = orient.forward * vertInput + orient.right * horiInput;
         if (grounded)
         {
-            rb.AddForce(movementDirection.normalized * currentSpeed * 10, ForceMode.Force);
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            rb.AddForce(movementDirection.normalized * currentSpeed, ForceMode.VelocityChange);
         }
         else
         {
-            //prevent player from continuing to fly forward if they let go of movement controls while jumping
-            if (horiInput == 0 && vertInput == 0)
-            {
-                rb.velocity = new Vector3(0, rb.velocity.y, 0);
-            }
-            rb.AddForce(movementDirection.normalized * currentSpeed * 10 * airMultiplier, ForceMode.Force);
+            
+            movementDirection.Normalize();
+            rb.velocity = new Vector3 (movementDirection.x * currentSpeed * 10 * airMultiplier, rb.velocity.y - 0.12f, movementDirection.z * currentSpeed * 10 * airMultiplier);
         }
 
 

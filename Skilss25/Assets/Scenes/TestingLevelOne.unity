@@ -1476,12 +1476,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ca2142e0bee874d9bf9d4f70f36af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedInit: 8
+  speedInit: 8.5
   currentSpeed: 6
-  jumpForceInit: 22
+  jumpForceInit: 65
   jumpForce: 15
-  groundDrag: 5
-  airMultiplier: 0.2
+  groundDrag: 7
+  airMultiplier: 0.25
   orient: {fileID: 259084985}
   horiInput: 0
   vertInput: 0
@@ -1520,7 +1520,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535280499}
   serializedVersion: 4
-  m_Mass: 2.5
+  m_Mass: 5.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
