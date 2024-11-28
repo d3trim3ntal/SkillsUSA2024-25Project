@@ -31,12 +31,12 @@ public class PlatformMovement : MonoBehaviour
         // Checks to make sure platform doesn't get stuck on start or end node, translates it from one node to the next
         if ((nodeDirection == 1 && currentNode != 0) || (nodeDirection == -1 && currentNode != nodeList.Length - 1))
         {
-            transform.Translate((nodeList[currentNode] - nodeList[currentNode - nodeDirection]) / timeBetweenNodes * 0.02f);
+            transform.Translate((nodeList[currentNode] - nodeList[currentNode - nodeDirection]) / timeBetweenNodes * .02f);
         }
         // Translates to start node
         if (nodeDirection == 1 && currentNode == 0 && loopingPlatform)
         {
-            transform.Translate((startNode - endNode) / timeBetweenNodes * 0.02f);
+            transform.Translate((startNode - endNode) / timeBetweenNodes * .02f);
         }
 
         // If the platform is close enough to destination

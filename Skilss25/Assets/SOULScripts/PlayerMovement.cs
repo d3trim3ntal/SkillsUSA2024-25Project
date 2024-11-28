@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Raycast and grounded variables
     public bool grounded;
+    public bool onPlatform;
     private bool jumpable = true;
     public float RaycastDist = 2f;
     public float jumpCooldown = 1f;
@@ -103,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
             if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
             {
                 transform.parent = c.gameObject.transform;
+                onPlatform = true;
             }
             
         }
@@ -114,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
        if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
        {
            transform.parent = null;
+           onPlatform = false;
        }
       
    }
