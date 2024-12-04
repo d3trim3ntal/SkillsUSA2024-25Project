@@ -8,6 +8,9 @@ public class ButtonTrigger : MonoBehaviour
     public GameObject objectConnected;
     MeshRenderer mesh;
     public int state = -1;
+    public float requiredWeight = 1;
+    float currentWeightOn = 0;
+    public List<GameObject> objectsOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +20,17 @@ public class ButtonTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentWeightOn = 0;
+        foreach (GameObject g in objectsOn)
+        {
+            currentWeightOn += g.GetComponent<ButtonWeight>().weight;
+        }
     }
 
     void OnTriggerStay(Collider col)
     {
         // Checks what object is colliding, then executes similarly to lever
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot"))
+        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot")) && currentWeightOn >= requiredWeight)
         {
             if (GetComponent<PlatformTrigger>() != null)
             {
@@ -39,13 +46,25 @@ public class ButtonTrigger : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot"))
         {
-            state = -1;
-            mesh.material.color = (Color.red);
-            if (GetComponent<PlatformTrigger>() != null)
+            if (currentWeightOn <= requiredWeight)
             {
-                PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
-                platEvent.DirectionSet(objectConnected, state);
+                state = -1;
+                mesh.material.color = (Color.red);
+                if (GetComponent<PlatformTrigger>() != null)
+                {
+                    PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
+                    platEvent.DirectionSet(objectConnected, state);
+                }
             }
+            objectsOn.Remove(col.gameObject);
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot"))
+        {
+            objectsOn.Add(col.gameObject);
         }
     }
 

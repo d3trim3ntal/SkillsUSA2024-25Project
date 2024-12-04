@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1229,6 +1228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectConnected: {fileID: 1746610706}
   state: -1
+  requiredWeight: 1
+  objectsOn: []
 --- !u!1001 &270705376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1623,6 +1624,7 @@ GameObject:
   - component: {fileID: 535280502}
   - component: {fileID: 535280501}
   - component: {fileID: 535280500}
+  - component: {fileID: 535280506}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Player
@@ -1756,6 +1758,19 @@ Transform:
   - {fileID: 259084985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &535280506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535280499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6471cb20469c2e4b90283ff4d63d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
 --- !u!1001 &547297961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4387,6 +4402,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7636012848721589774, guid: 1225773d8c4f54d43b60238faa2143c5, type: 3}
+      propertyPath: requiredWeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636012848721589774, guid: 1225773d8c4f54d43b60238faa2143c5, type: 3}
       propertyPath: objectConnected
       value: 
       objectReference: {fileID: 1482776487}
@@ -6721,12 +6740,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!81 &2144121248
 AudioListener:
   m_ObjectHideFlags: 0
