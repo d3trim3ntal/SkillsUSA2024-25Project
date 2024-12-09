@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class RobotScript : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class RobotScript : MonoBehaviour
     public bool operative = false;
     public char[] availableSequence;
     public List<char> currentSequence = new List<char>();
+    public TMP_Text robotText;
     public int currentPartRunning;
     public float locateRad;
     public float pickupRad = 2.5f;
@@ -86,6 +89,12 @@ public class RobotScript : MonoBehaviour
                 }
             }
 
+            robotText.text = null;
+            for (int i = 0; i < currentSequence.Count; i++)
+            {
+                robotText.text += currentSequence[i];
+            }
+
             // Releasing F starts the code
             if (Input.GetKeyUp(KeyCode.F))
             {
@@ -141,6 +150,7 @@ public class RobotScript : MonoBehaviour
         else
         {
             currentSequence.Clear();
+            robotText.text = null;
             objectToGoTo = null;
             operative = false;
             smoke.Play();
