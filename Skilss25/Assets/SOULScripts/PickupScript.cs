@@ -8,6 +8,7 @@ public class PickupScript : MonoBehaviour
     // Whether or not it's picked up and object holding it
     public bool pickedUp;
     GameObject objPicking;
+    public GameObject displayText;
 
     // Start is called before the first frame update
     void Start()
@@ -77,4 +78,13 @@ public class PickupScript : MonoBehaviour
         }
     }
 
+    public void Display()
+    {
+        displayText.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        displayText.SetActive(false);
+    }
 }

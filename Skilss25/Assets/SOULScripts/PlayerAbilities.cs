@@ -36,6 +36,19 @@ public class PlayerAbilities : MonoBehaviour
 
     void PickupFunctionality()
     {
+        GameObject[] picks = GameObject.FindGameObjectsWithTag("Pickup");
+        foreach (GameObject p in picks)
+        {
+            if ((transform.position - p.transform.position).magnitude < pickupRadius && !currentlyHolding)
+            {
+                p.GetComponent<PickupScript>().Display();
+            }
+            else
+            {
+                p.GetComponent<PickupScript>().Hide();
+            }
+        }
+
         // Press E to pick up and drop things
         if (Input.GetKeyDown(KeyCode.E) && !currentlyFixing)
         {
@@ -65,6 +78,19 @@ public class PlayerAbilities : MonoBehaviour
 
     void InteractFunctionality()
     {
+        GameObject[] interacts = GameObject.FindGameObjectsWithTag("Interactable");
+        foreach (GameObject i in interacts)
+        {
+            if ((transform.position - i.transform.position).magnitude < interactRadius && (!i.GetComponent<LeverTrigger>().oneTime || (i.GetComponent<LeverTrigger>().oneTime && !i.GetComponent<LeverTrigger>().oneTimeTriggered)))
+            {
+                i.GetComponent<LeverTrigger>().Display();
+            }
+            else
+            {
+                i.GetComponent<LeverTrigger>().Hide();
+            }
+        }
+
         // Press Q to interact with objects like levers
         if (Input.GetKeyDown(KeyCode.Q) && !currentlyFixing && !currentlyHolding)
         {
