@@ -109,6 +109,19 @@ public class PlayerAbilities : MonoBehaviour
 
     void RobotFunctionality()
     {
+        GameObject[] roboot = GameObject.FindGameObjectsWithTag("Robot");
+        foreach (GameObject r in roboot)
+        {
+            if ((transform.position - r.transform.position).magnitude < interactRadius && !currentlyHolding && !currentlyFixing && !r.GetComponent<RobotScript>().gettingFixed && !r.GetComponent<RobotScript>().operative)
+            {
+                r.GetComponent<RobotScript>().Display();
+            }
+            else
+            {
+                r.GetComponent<RobotScript>().Hide();
+            }
+        }
+
         // Hold F to begin fixing robots
         if (Input.GetKeyDown(KeyCode.F) && !currentlyHolding)
         {

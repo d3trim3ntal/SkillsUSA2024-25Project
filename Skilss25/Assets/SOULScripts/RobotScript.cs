@@ -24,6 +24,8 @@ public class RobotScript : MonoBehaviour
     public GameObject objectHolding;
     GameObject objectToGoTo = null;
 
+    public GameObject displayText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -254,6 +256,16 @@ public class RobotScript : MonoBehaviour
         {
             transform.parent = null;
         }
+    }
+
+    public void Display()
+    {
+        displayText.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        displayText.SetActive(false);
     }
 }
 

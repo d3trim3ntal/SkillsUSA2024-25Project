@@ -370,5 +370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedObject: {fileID: 0}
   oneTime: 0
+  oneTimeTriggered: 0
   currentState: -1
   displayText: {fileID: 1320852236315261447}
