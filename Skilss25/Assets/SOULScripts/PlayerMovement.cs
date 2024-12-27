@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
 
     // Speed and jump power initialization; One to set the initial value, and the other to change during gameplay
+    [Header("Stats")]
     public float speedInit = 5;
     public float currentSpeed = 5;
     public float jumpForceInit = 10;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier = .4f;
 
     //the orientation gameobject to figure out movement direction
+    [Header("Misc")]
     Vector3 movementDirection;
     public Transform orient;
 
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float vertInput;
 
     // Raycast and grounded variables
+    [Header("Ground Check Vars")]
     public bool grounded;
     public bool onPlatform;
     private bool jumpable = true;
