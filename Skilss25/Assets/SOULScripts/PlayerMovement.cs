@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Misc")]
     Vector3 movementDirection;
     public Transform orient;
+    [SerializeField] BoxCollider boxCollider;
 
     // Input handling variables
     public float horiInput;
@@ -45,7 +46,10 @@ public class PlayerMovement : MonoBehaviour
         // Get inputs
         horiInput = Input.GetAxisRaw("Horizontal");
         vertInput = Input.GetAxisRaw("Vertical");
-        grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
+        //grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
+        Vector3 extents = new Vector3(10f, 10f, 10f);
+        Vector3 boxPos = new Vector3(transform.position.x, (transform.position.y + boxCollider.size.y /2), transform.position.z);
+        grounded = Physics.BoxCast(boxPos, boxCollider.size / 2, Vector3.down, transform.rotation, (boxCollider.size.y / 2) + RaycastDist, ground);
         //make drag if the player is grounded
         if (grounded)
         {
