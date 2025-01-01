@@ -16,7 +16,8 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
         private ViewSpaceNormalsTextureSettings normalsTextureSettings;
         private readonly List<ShaderTagId> shaderTagIdList;
         private readonly RenderTargetHandle normals;
-        public ViewSpaceNormalsTexturePass(RenderPassEvent renderPassEvent, ViewSpaceNormalsTextureSettings settings)
+        private FilteringSettings filteringSettings;
+        public ViewSpaceNormalsTexturePass(RenderPassEvent renderPassEvent, LayerMask outlinesLayerMask, ViewSpaceNormalsTextureSettings settings)
         {
             normalsMaterial = new Material(Shader.Find("Hidden/ViewSpaceNormalsShader"));
             shaderTagIdList = new List<ShaderTagId>
@@ -25,6 +26,7 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
             };
             this.renderPassEvent = renderPassEvent;
             normals.Init("_ScreenViewSpaceNormals");
+            filteringSettings = new FilteringSettings(RenderQueueRange.opaque, outlinesLayerMask);
         }
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
@@ -68,21 +70,23 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
     [SerializeField] private RenderPassEvent renderPassEvent;
 
     private ViewSpaceNormalsTexturePass viewSpaceNormalsTexturePass;
-    private ScreenSpaceOutlinesPass screenSpaceOutlinesPass;
+    private ScreenSpaceOutlinePass screenSpaceOutlinePass;
 
     public override void Create()
     {
         viewSpaceNormalsTexturePass = new ViewSpaceNormalsTexturePass(renderPassEvent);
-        screenSpaceOutlinesPass = new ScreenSpaceOutlinesPass(renderPassEvent);
+        screenSpaceOutlinePass = new ScreenSpaceOutlinePass(renderPassEvent);
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
         renderer.EnqueuePass(viewSpaceNormalsTexturePass);
-        renderer.EnqueuePass(screenSpaceOutlinesPass);
+        renderer.EnqueuePass(screenSpaceOutlinePass);
     }
 
     [SerializeField] private ViewSpaceNormalsTextureSettings viewSpaceNormalsTextureSettings;
+    [SerializeField] private LayerMask outlinesLayerMask;
 
 }
 */
+
