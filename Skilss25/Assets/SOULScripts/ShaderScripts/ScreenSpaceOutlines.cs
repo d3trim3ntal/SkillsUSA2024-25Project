@@ -6,15 +6,19 @@ using UnityEngine;
 
 public class ScreenSpaceOutlines : ScriptableRendererFeature
 { 
-    /*[System.Serializable]
-    private class ViewSpaceNormalsTextureSettings { ... }
-    private class ViewSpaceNormalsTexturePass : ScriptableRendererPass 
+    [System.Serializable]
+    private class ViewSpaceNormalsTextureSettings
+    {
+
+    }
+    private class ViewSpaceNormalsTexturePass : ScriptableRenderPass 
     {
         private ViewSpaceNormalsTextureSettings normalsTextureSettings;
         private readonly List<ShaderTagId> shaderTagIdList;
         private readonly RenderTargetHandle normals;
-        public ViewSpaceNormalsTexturePass(RenderPassEvent renderPassEvent, ViewSpaceNormalsTexturePass settings)
+        public ViewSpaceNormalsTexturePass(RenderPassEvent renderPassEvent, ViewSpaceNormalsTextureSettings settings)
         {
+            normalsMaterial = new Material(Shader.Find("Hidden/ViewSpaceNormalsShader"));
             shaderTagIdList = new List<ShaderTagId>
             {
                 new shaderTagId("UniversalForward"), new shaderTagId("UniversalForwardOnly"), new shaderTagId("LightWeightForward"), new shaderTagId("SRDefaultUnlit")
@@ -32,15 +36,17 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
             ConfigureClear(ClearFlag.All, normalsTextureSettings.backgroundColor);
         }
 
-        public override void Execute(ScriptableRendeContext context, ref RenderingData renderingData)
+        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (!normalsMaterial)
+                return;
             CommandBuffer cmd = CommandBufferPool.Get();
             using (new ProfilingScope(cmd, new ProfilingSampler("SceneViewSpaceNormalsTextureCreation")))
             {
                 context.ExecuteCommandBuffer(cmd);
                 cmd.Clear();
                 DrawingSettings drawSettings = CreateDrawingSettings(shaderTagList, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
-                draqSettings.overrideMaterial = 
+                draqSettings.overrideMaterial = normalsMaterial;
                 FilteringSettings filteringSettings = FilteringSettings.defaultValue;
                 context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref filteringSettings);        
             }
@@ -54,7 +60,10 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
         }
     }
 
-    private class ScreenSpaceOutlinesPass : ScriptableRendererPass { ... }
+    private class ScreenSpaceOutlinePass : ScriptableRenderPass
+    {
+
+    }
 
     [SerializeField] private RenderPassEvent renderPassEvent;
 
