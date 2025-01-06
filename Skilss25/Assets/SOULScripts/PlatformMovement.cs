@@ -16,6 +16,8 @@ public class PlatformMovement : MonoBehaviour
     public int currentNode = 0;
     // Whether or not the platform will loop in one direction
     public bool loopingPlatform;
+
+    public GameObject[] gears;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,21 @@ public class PlatformMovement : MonoBehaviour
                     // Makes a looping platform go back to the first node
                     currentNode = 0;
                 }
+            }
+        }
+
+        if (nodeDirection != 0)
+        {
+            foreach (GameObject g in gears)
+            {
+                g.GetComponent<Spin>().toggle = true;
+            }
+        }
+        else
+        {
+            foreach (GameObject g in gears)
+            {
+                g.GetComponent<Spin>().toggle = false;
             }
         }
     }
