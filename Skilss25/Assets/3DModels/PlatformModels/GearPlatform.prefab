@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2046871631559111746}
   - component: {fileID: 2338977910223561349}
   - component: {fileID: 5006049273251593580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gear3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 8241920772949913071}
   - component: {fileID: 2653896976924661205}
   - component: {fileID: 9119730783312459313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gear1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8199782473105150784}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GearPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 8015709127590454151}
   - component: {fileID: 7146202535939386110}
   - component: {fileID: 8298765912702910612}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 2102633782719094522}
   - component: {fileID: 4830698141895211853}
   - component: {fileID: 1109636149402579525}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gear4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 2961872152125230004}
   - component: {fileID: 8123129665758772860}
   - component: {fileID: 2238709109769761692}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gear2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7431472263665216150}
   - component: {fileID: 6368335329577575651}
   - component: {fileID: 2478789387800451408}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: I-Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6204324501442896655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2608361293735408178}
   - component: {fileID: 1079735397594876852}
   - component: {fileID: 3141276825226101314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bolts1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 9127549348853622732}
   - component: {fileID: 2592709127028984282}
   - component: {fileID: 8718492694445423869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bolts1.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 902961511572295538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ConveyorPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,8 +217,7 @@ GameObject:
   - component: {fileID: 4776846652997257242}
   - component: {fileID: 2773416102858169557}
   - component: {fileID: 5606696003520190324}
-  - component: {fileID: 784822322489116931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InnerWheel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,29 +290,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &784822322489116931
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762520910335908050}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4994663494746050033
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +301,8 @@ GameObject:
   - component: {fileID: 4040018384507202490}
   - component: {fileID: 1681960244688948848}
   - component: {fileID: 8041222523653802933}
-  m_Layer: 0
+  - component: {fileID: 1485921535980493383}
+  m_Layer: 7
   m_Name: ConveyorWheel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,6 +377,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1485921535980493383
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994663494746050033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -249190555448979813, guid: e16f66dbe39dd704fb63054e19dee4b8, type: 3}
 --- !u!1 &5150357605454616792
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +411,7 @@ GameObject:
   - component: {fileID: 7010179501226389940}
   - component: {fileID: 8642605457180922107}
   - component: {fileID: 6464598424579230679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InnerWheel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +518,7 @@ GameObject:
   - component: {fileID: 2223933093558092155}
   - component: {fileID: 6326212829715610756}
   - component: {fileID: 8207965183656236103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bolts2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +603,7 @@ GameObject:
   - component: {fileID: 2925041303860110646}
   - component: {fileID: 8409022190669152287}
   - component: {fileID: 3574488343083820517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InnerWheel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +710,8 @@ GameObject:
   - component: {fileID: 1405299365728228082}
   - component: {fileID: 2571636860509250373}
   - component: {fileID: 8025649901104701068}
-  m_Layer: 0
+  - component: {fileID: 8551963942065900731}
+  m_Layer: 7
   m_Name: ConveyorWheel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,6 +786,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8551963942065900731
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680896859930295065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1761378462770521683, guid: e16f66dbe39dd704fb63054e19dee4b8, type: 3}
 --- !u!1 &5984039187273259705
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +819,7 @@ GameObject:
   - component: {fileID: 3238622203437570319}
   - component: {fileID: 2489826187077173251}
   - component: {fileID: 1895046346055447163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ConveyorBelt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +904,7 @@ GameObject:
   - component: {fileID: 4547034658225645035}
   - component: {fileID: 6841826664570589922}
   - component: {fileID: 8759161127349500612}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InnerWheel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +1011,7 @@ GameObject:
   - component: {fileID: 3809321429426078821}
   - component: {fileID: 262247733475676495}
   - component: {fileID: 5410967566485893630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bolts1.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1095,8 @@ GameObject:
   - component: {fileID: 4340505476326268952}
   - component: {fileID: 3438233753386296972}
   - component: {fileID: 948253833361600011}
-  m_Layer: 0
+  - component: {fileID: 2712604319821694928}
+  m_Layer: 7
   m_Name: ConveyorWheel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,6 +1169,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2712604319821694928
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486427356055805987}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7077542386527898489, guid: e16f66dbe39dd704fb63054e19dee4b8, type: 3}
 --- !u!1 &6939757586866468776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1202,8 @@ GameObject:
   - component: {fileID: 5740795221282988157}
   - component: {fileID: 7190655235800678192}
   - component: {fileID: 5492965713174984708}
-  m_Layer: 0
+  - component: {fileID: 2844597798185793184}
+  m_Layer: 7
   m_Name: ConveyorWheel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,3 +1278,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2844597798185793184
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939757586866468776}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2585152839346287806, guid: e16f66dbe39dd704fb63054e19dee4b8, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9026451809776706954}
   - component: {fileID: 6464713046207437805}
   - component: {fileID: 5201054570939905897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text1.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: f55391e86b5737740aaf185e27f0b5bc, type: 2}
   - {fileID: 2100000, guid: ac0a2e3046ee71c4baa8ab0b4438dd6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -94,7 +95,7 @@ GameObject:
   - component: {fileID: 6884026664327522321}
   - component: {fileID: 740092978288559560}
   - component: {fileID: 7455723728855465572}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SteelPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +146,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: f55391e86b5737740aaf185e27f0b5bc, type: 2}
   - {fileID: 2100000, guid: e005f0ccd5e1b1d46bd09b9be7c9a6f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -176,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713316167497542938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SteelPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

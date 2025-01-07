@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'RightLowerLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +25,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -82,7 +83,117 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: MainCharacter(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: MainCharacter(Clone)
+      position: {x: 0.000000001301381, y: 0.9130565, z: -0.0000000011371415}
+      rotation: {x: -0.70710677, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 10.370937, y: 24.165554, z: 24.165554}
+    - name: Head
+      parentName: Body
+      position: {x: 0.000048875343, y: -0.0000062566646, z: 0.018708475}
+      rotation: {x: -0.13117756, y: 0.004377321, z: -6.984919e-10, w: 0.9913492}
+      scale: {x: 3.0865088, y: 1.6025857, z: 1.6129162}
+    - name: Eye L
+      parentName: Head
+      position: {x: -0.00773897, y: -0.0043636146, z: 0.008132949}
+      rotation: {x: 0.27831644, y: -0.6446665, z: 0.033847228, w: 0.71119577}
+      scale: {x: 0.45518193, y: 0.47024333, z: 0.5314132}
+    - name: Smile
+      parentName: Head
+      position: {x: -0.006613573, y: -0.00021296793, z: 0.002828946}
+      rotation: {x: -0, y: -0.70710677, z: 0, w: 0.7071068}
+      scale: {x: 0.21176791, y: 0.21313302, z: 0.25785956}
+    - name: Eye R
+      parentName: Head
+      position: {x: -0.0080256555, y: 0.0044122473, z: 0.008125166}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.1240249, y: 2.582153, z: 2.5656145}
+    - name: Hair
+      parentName: Head
+      position: {x: 0.0006252871, y: -0.00034778158, z: 0.009813211}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.1240249, y: 2.3545444, z: 2.5656147}
+    - name: Cylinder.001
+      parentName: Head
+      position: {x: -0.00044045932, y: -0.010909993, z: 0.011656792}
+      rotation: {x: -0.7071068, y: 1.5945121e-16, z: 3.070354e-17, w: 0.7071067}
+      scale: {x: 0.064859785, y: 0.05326629, z: 0.136935}
+    - name: ArmR
+      parentName: Body
+      position: {x: -0.00012307985, y: -0.008620818, z: 0.009765512}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.2299172, y: 0.5278337, z: 0.5278337}
+    - name: Protruding Metal 3
+      parentName: ArmR
+      position: {x: -0.009850783, y: -0.016154004, z: -0.042459812}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 7.839821, y: 7.839821, z: 7.839821}
+    - name: HandR
+      parentName: ArmR
+      position: {x: 0.000014509354, y: -0.01742016, z: -0.046561707}
+      rotation: {x: -0.07995991, y: 1.7754666e-17, z: -4.9579715e-24, w: 0.9967981}
+      scale: {x: 0.86197907, y: 0.195448, z: 0.19383042}
+    - name: Protruding Metal 2
+      parentName: Body
+      position: {x: -0.010455653, y: -0.0011717532, z: 0.0012790799}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 9.64233, y: 4.1381216, z: 4.1381216}
+    - name: BodyStreak
+      parentName: Body
+      position: {x: -0.009635325, y: 0.0027322252, z: 0.0012640309}
+      rotation: {x: 0.039551225, y: -1.2116207e-17, z: 3.3040414e-19, w: 0.99921757}
+      scale: {x: 0.06680853, y: 0.050351627, z: 0.20243579}
+    - name: Plate
+      parentName: Body
+      position: {x: 0.009580415, y: -0.000023358452, z: 0.0069837878}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.39649466, y: 0.58554906, z: 0.58554906}
+    - name: ArmL
+      parentName: Body
+      position: {x: -0.00011479658, y: 0.008617634, z: 0.009768049}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.2299172, y: 0.5278337, z: 0.5278337}
+    - name: HandL
+      parentName: ArmL
+      position: {x: 0.00011290172, y: 0.018050693, z: -0.04658987}
+      rotation: {x: -0.07995991, y: 1.7754666e-17, z: -4.9579715e-24, w: 0.9967981}
+      scale: {x: 0.86197907, y: 0.195448, z: 0.19383042}
+    - name: Protruding Metal 3.001
+      parentName: ArmL
+      position: {x: -0.009857519, y: -0.048812874, z: -0.042464636}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 7.839821, y: 7.839821, z: 7.839821}
+    - name: RightLeg
+      parentName: Body
+      position: {x: 0.00003029377, y: -0.005410726, z: -0.011720046}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.99153197, y: 0.4255278, z: 0.4255278}
+    - name: LeftLeg
+      parentName: Body
+      position: {x: 0.00010834188, y: 0.0057555656, z: -0.011721883}
+      rotation: {x: 0.0008193851, y: -0.066403635, z: -0.00004096702, w: 0.99779254}
+      scale: {x: 0.99153197, y: 0.4255278, z: 0.4255278}
+    - name: Boot
+      parentName: LeftLeg
+      position: {x: -0.02508046, y: -0.00027538775, z: -0.05527013}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.2033868, y: 1.2033868, z: 1.2033868}
+    - name: PowerPack
+      parentName: Body
+      position: {x: -1.2548346e-10, y: -4.7056296e-11, z: -0.07916461}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 9.64233, y: 4.1381216, z: 4.1381216}
+    - name: BootTape
+      parentName: MainCharacter(Clone)
+      position: {x: -0.29538897, y: 0.1812396, z: -0.16079156}
+      rotation: {x: -0.55060595, y: 0.55060637, z: 0.4436583, w: 0.4436587}
+      scale: {x: 7.0066795, y: 3.8841825, z: 9.382228}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -93,13 +204,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
