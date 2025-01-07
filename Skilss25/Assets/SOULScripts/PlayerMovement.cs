@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator adaAni;
     Rigidbody rb;
 
     // Speed and jump power initialization; One to set the initial value, and the other to change during gameplay
@@ -39,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         currentSpeed = speedInit;
         jumpForce = jumpForceInit;
-        
     }
     void Update()
     {
@@ -75,6 +75,18 @@ public class PlayerMovement : MonoBehaviour
 
         //get move direction and move 
         movementDirection = orient.forward * vertInput + orient.right * horiInput;
+
+        if (movementDirection.magnitude > 0)
+        {
+            adaAni.SetTrigger("Walking");
+            adaAni.ResetTrigger("Still");
+        }
+        else
+        {
+            adaAni.ResetTrigger("Walking");
+            adaAni.SetTrigger("Still");
+        }
+
         if (grounded)
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
