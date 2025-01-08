@@ -20,19 +20,21 @@ public class ConveyorBelt : MonoBehaviour
     {
         for(int i = 0; i <= onBelt.Count - 1; i++)
         {
-            onBelt[i].GetComponent<Rigidbody>().velocity = speed * direction * Time.deltaTime;
+            onBelt[i].GetComponent<Rigidbody>().velocity = speed * direction;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         onBelt.Add(collision.gameObject);
+        Debug.Log("On belt");
     }
 
     private void OnCollisionExit(Collision collision)
     {
         onBelt.Remove(collision.gameObject);
         collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Debug.Log("Off belt");
     }
 
     private void OnTriggerEnter(Collider other)
