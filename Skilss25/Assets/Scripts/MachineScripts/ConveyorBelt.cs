@@ -45,13 +45,13 @@ public class ConveyorBelt : MonoBehaviour
         }
     }
 
-    private void ReplaceWithRandomTool(GameObject item)
+    public void ReplaceWithRandomTool(GameObject item)
     {
         int randomIndex = Random.Range(0, tools.Count);
         GameObject randomTool = tools[randomIndex];
         GameObject newTool = Instantiate(randomTool, item.transform.position, item.transform.rotation);
+        onBelt.Remove(item);
         Destroy(item);
-        onBelt.Add(newTool);
     }
 
 }
