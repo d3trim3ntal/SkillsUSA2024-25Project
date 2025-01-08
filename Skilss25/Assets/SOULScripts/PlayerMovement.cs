@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown = 1f;
     public LayerMask ground;
 
+    
+
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -48,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
         vertInput = Input.GetAxisRaw("Vertical");
         //grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
         Vector3 extents = new Vector3(10f, 10f, 10f);
-        Vector3 boxPos = new Vector3(transform.position.x, (transform.position.y + boxCollider.size.y /2), transform.position.z);
-        grounded = Physics.BoxCast(boxPos, boxCollider.size / 2, Vector3.down, transform.rotation, (boxCollider.size.y / 2) + RaycastDist, ground);
+        Vector3 boxPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        grounded = Physics.BoxCast(boxPos, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, (boxCollider.size.y * transform.lossyScale.y / 2) + RaycastDist, ground);
         //make drag if the player is grounded
         if (grounded)
         {
@@ -76,16 +79,20 @@ public class PlayerMovement : MonoBehaviour
         //get move direction and move 
         movementDirection = orient.forward * vertInput + orient.right * horiInput;
 
-        if (movementDirection.magnitude > 0)
+        if(adaAni != null)
         {
-            adaAni.SetTrigger("Walking");
-            adaAni.ResetTrigger("Still");
+            if (movementDirection.magnitude > 0)
+            {
+                adaAni.SetTrigger("Walking");
+                adaAni.ResetTrigger("Still");
+            }
+            else
+            {
+                adaAni.ResetTrigger("Walking");
+                adaAni.SetTrigger("Still");
+            }
         }
-        else
-        {
-            adaAni.ResetTrigger("Walking");
-            adaAni.SetTrigger("Still");
-        }
+        
 
         if (grounded)
         {

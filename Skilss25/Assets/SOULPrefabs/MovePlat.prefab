@@ -56,6 +56,7 @@ MonoBehaviour:
   nodeDirection: 0
   currentNode: 0
   loopingPlatform: 0
+  gears: []
 --- !u!1001 &5335472692859270864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83,6 +84,14 @@ PrefabInstance:
     - target: {fileID: 3594149401568198864, guid: 1734b47e974961e4ba2cbfa264bb9cf3, type: 3}
       propertyPath: m_LocalScale.z
       value: 27.18768
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039711206095988245, guid: 1734b47e974961e4ba2cbfa264bb9cf3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039711206095988245, guid: 1734b47e974961e4ba2cbfa264bb9cf3, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 8199782473105150784, guid: 1734b47e974961e4ba2cbfa264bb9cf3, type: 3}
       propertyPath: m_LocalScale.x
