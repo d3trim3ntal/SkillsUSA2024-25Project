@@ -11,6 +11,7 @@ TagManager:
   - Pickup
   - Interactable
   - Wall
+  - Item
   layers:
   - Default
   - TransparentFX

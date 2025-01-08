@@ -7,6 +7,8 @@ public class ConveyorBelt : MonoBehaviour
     public float speed;
     public Vector3 direction;
     public List<GameObject> onBelt;
+    public List <GameObject> tools;
+    public GameObject machineCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,23 @@ public class ConveyorBelt : MonoBehaviour
     {
         onBelt.Remove(collision.gameObject);
         collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item"))
+        {
+            ReplaceWithRandomTool(other.gameObject);
+        }
+    }
+
+    private void ReplaceWithRandomTool(GameObject item)
+    {
+        int randomIndex = Random.Range(0, tools.Count);
+        GameObject randomTool = tools[randomIndex];
+        GameObject newTool = Instantiate(randomTool, item.transform.position, item.transform.rotation);
+        Destroy(item);
+        onBelt.Add(newTool);
     }
 
 }
