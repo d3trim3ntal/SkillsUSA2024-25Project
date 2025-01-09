@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public bool grounded;
     public bool onPlatform;
     private bool jumpable = true;
-    public float RaycastDist = 2f;
+    public float raycastDist = 2f;
     public float jumpCooldown = 1f;
     public LayerMask ground;
 
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         //grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
         Vector3 extents = new Vector3(10f, 10f, 10f);
         Vector3 boxPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        grounded = Physics.BoxCast(boxPos, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, (boxCollider.size.y * transform.lossyScale.y / 2) + RaycastDist, ground);
+        grounded = Physics.BoxCast(boxPos - Vector3.up * 3, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground);
         //make drag if the player is grounded
         if (grounded)
         {

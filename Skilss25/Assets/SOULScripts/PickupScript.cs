@@ -21,7 +21,7 @@ public class PickupScript : MonoBehaviour
     {
         if (pickedUp)
         {
-            transform.position = objPicking.transform.position + objPicking.transform.forward;
+            transform.position = objPicking.transform.position - objPicking.transform.right * 1.5f + 2.5f * Vector3.up;
             transform.Rotate(Vector3.up * 90 * Time.deltaTime);
         }
     }

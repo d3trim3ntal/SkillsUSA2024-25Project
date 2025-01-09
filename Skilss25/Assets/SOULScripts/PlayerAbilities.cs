@@ -37,7 +37,21 @@ public class PlayerAbilities : MonoBehaviour
     void PickupFunctionality()
     {
         GameObject[] picks = GameObject.FindGameObjectsWithTag("Pickup");
+        GameObject[] item = GameObject.FindGameObjectsWithTag("Item");
+
+        List<GameObject> totalPicks = new(picks.Length + item.Length);
+
         foreach (GameObject p in picks)
+        {
+            totalPicks.Add(p);
+        }
+
+        foreach (GameObject i in item)
+        {
+            totalPicks.Add(i);
+        }
+
+        foreach (GameObject p in totalPicks)
         {
             if ((transform.position - p.transform.position).magnitude < pickupRadius && !currentlyHolding)
             {
@@ -57,7 +71,20 @@ public class PlayerAbilities : MonoBehaviour
 
                 // Detects all pickups within range and essentially chooses one at random to pick up
                 GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup");
+                GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+
+                List<GameObject> totalPickups = new(pickups.Length + items.Length);
+
                 foreach (GameObject p in pickups)
+                {
+                    totalPickups.Add(p);
+                }
+
+                foreach (GameObject i in items)
+                {
+                    totalPickups.Add(i);
+                }
+                foreach (GameObject p in totalPickups)
                 {
                     if ((transform.position - p.transform.position).magnitude < pickupRadius)
                     {

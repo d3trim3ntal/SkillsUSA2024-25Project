@@ -39,7 +39,7 @@ public class ConveyorBelt : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Item"))
+        if (other.gameObject.CompareTag("Pickup"))
         {
             ReplaceWithRandomTool(other.gameObject);
         }
