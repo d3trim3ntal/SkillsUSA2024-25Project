@@ -96,4 +96,9 @@ public class UISetsManager : MonoBehaviour
     {
         SceneManager.LoadScene("SOULMM");
     }
+
+    public void TestLevel()
+    {
+        SceneManager.LoadScene("TestingLevelOne");
+    }
 }

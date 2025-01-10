@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         //grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
         Vector3 extents = new Vector3(10f, 10f, 10f);
         Vector3 boxPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        grounded = Physics.BoxCast(boxPos - Vector3.up * 3, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground);
+        grounded = Physics.BoxCast(boxPos - (transform.localScale.y * GetComponent<BoxCollider>().size.y * 0.5f - 0.25f) * Vector3.up, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground);
         //make drag if the player is grounded
         if (grounded)
         {
