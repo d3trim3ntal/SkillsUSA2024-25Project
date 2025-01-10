@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movementDirection;
     public Transform orient;
     [SerializeField] BoxCollider boxCollider;
+    private bool movable = true;
+    private CinemachineFreeLook followCam;
 
     // Input handling variables
     public float horiInput;
@@ -43,9 +46,27 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         currentSpeed = speedInit;
         jumpForce = jumpForceInit;
+        followCam = FindObjectOfType<CinemachineFreeLook>();
     }
     void Update()
     {
+        //Cursor keybind
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (movable)
+            {
+                followCam.enabled = false;
+                movable = false;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                followCam.enabled = true;
+
+                movable = true;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
         // Get inputs
         horiInput = Input.GetAxisRaw("Horizontal");
         vertInput = Input.GetAxisRaw("Vertical");
