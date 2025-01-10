@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class PipeManager : MonoBehaviour
 {
-    public PipeSpin[] row1;
-    public PipeSpin[] row2;
-    public PipeSpin[] row3;
-    public PipeSpin[] row4;
-    Dictionary<int, PipeSpin[]> rows = new Dictionary<int, PipeSpin[]>();
+    public SpinnyPipe[] row1;
+    public SpinnyPipe[] row2;
+    public SpinnyPipe[] row3;
+    public SpinnyPipe[] row4;
+    public GameObject pipeCam;
+    public GameObject mainCam;
+    public bool active;
+    Dictionary<int, SpinnyPipe[]> rows = new Dictionary<int, SpinnyPipe[]>();
     
     private void Awake()
     {
@@ -18,13 +21,12 @@ public class PipeManager : MonoBehaviour
         rows.Add(3, row3);
         rows.Add(4, row4);
         
-
     }
-    public PipeSpin upPipe(int row, int column)
+    public SpinnyPipe upPipe(int row, int column)
     {
         if (row < 4)
         {
-            PipeSpin output = rows[row + 1][column];
+            SpinnyPipe output = rows[row + 1][column];
             return output;
         }
         else
@@ -33,11 +35,11 @@ public class PipeManager : MonoBehaviour
         }
         
     }
-    public PipeSpin leftPipe(int row, int column)
+    public SpinnyPipe leftPipe(int row, int column)
     {
         if (column > 1)
         {
-            PipeSpin output = rows[row][column - 1];
+            SpinnyPipe output = rows[row][column - 1];
             return output;
         }
         else
@@ -47,11 +49,11 @@ public class PipeManager : MonoBehaviour
         
     }
 
-    public PipeSpin downPipe(int row, int column)
+    public SpinnyPipe downPipe(int row, int column)
     {
         if (row > 1)
         {
-            PipeSpin output = rows[row - 1][column];
+            SpinnyPipe output = rows[row - 1][column];
             return output;
         }
         else
@@ -60,11 +62,11 @@ public class PipeManager : MonoBehaviour
         }
         
     }
-    public PipeSpin rightPipe(int row, int column)
+    public SpinnyPipe rightPipe(int row, int column)
     {
         if (column < 6)
         {
-            PipeSpin output = rows[row][column + 1];
+            SpinnyPipe output = rows[row][column + 1];
             return output;
         }
         else
@@ -72,6 +74,23 @@ public class PipeManager : MonoBehaviour
             return null;
         }
         
+    }
+
+    public void toggleCam()
+    {
+        if (active)
+        {
+            active = false;
+            mainCam.SetActive(true);
+            pipeCam.SetActive(false);
+        }
+        else
+        {
+            active = true;
+            mainCam.SetActive(false);
+            pipeCam.SetActive(true);
+
+        }
     }
 
 }
