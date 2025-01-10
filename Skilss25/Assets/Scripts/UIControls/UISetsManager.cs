@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -11,6 +11,7 @@ public class UISetsManager : MonoBehaviour
     public Slider volumeSlider;
     public Slider brightnessSlider;
     public Light sceneLight;
+    public Button playBttn;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class UISetsManager : MonoBehaviour
         {
             Load();
         }
+        playBttn.onClick.AddListener(() => StartCoroutine(ChangeSceneAfterDelay(1f)));
     }
 
     void onVolumeChanged()
@@ -78,5 +80,20 @@ public class UISetsManager : MonoBehaviour
     {
         FindAnyObjectByType<AudioManager>().Play("Select");
     }
+
+    public IEnumerator ChangeSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("MainBaseLevel1");
+    }
+
+    public void Sandbox()
+    {
+        SceneManager.LoadScene("SandboxMessingAround");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("SOULMM");
+    }
 }
-*/

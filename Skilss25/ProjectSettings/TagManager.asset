@@ -12,6 +12,7 @@ TagManager:
   - Interactable
   - Wall
   - Item
+  - ChangeSceneTrigger
   layers:
   - Default
   - TransparentFX
