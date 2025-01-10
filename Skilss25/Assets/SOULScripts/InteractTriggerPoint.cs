@@ -36,5 +36,10 @@ public class InteractTriggerPoint : MonoBehaviour
         {
             GetComponent<CheckpointSet>().SetPlayerCheckpoint(transform.position);
         }
+
+        if (GetComponent<PipeManager>() != null)
+        {
+            GetComponent<PipeManager>().toggleCam();
+        }
     }
 }
