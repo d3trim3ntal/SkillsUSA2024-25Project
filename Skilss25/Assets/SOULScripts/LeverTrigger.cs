@@ -8,13 +8,11 @@ public class LeverTrigger : MonoBehaviour
     public GameObject connectedObject;
     public bool oneTime = false;
     public bool oneTimeTriggered = false;
-    MeshRenderer mesh;
     public int currentState = -1;
     public GameObject displayText;
     // Start is called before the first frame update
     void Start()
     {
-        mesh = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -27,8 +25,6 @@ public class LeverTrigger : MonoBehaviour
     {
         if (!oneTimeTriggered)
         {
-            Color coloring = mesh.material.color;
-            mesh.material.color = new Color(coloring.r + currentState * -1, coloring.g + currentState * -1, coloring.b + currentState * -1);
             currentState *= -1;
 
             // The next couple of if statements will check for certain scripts on each lever; if they have it, they will execute that script
@@ -43,7 +39,6 @@ public class LeverTrigger : MonoBehaviour
             }
             if (oneTime)
             {
-                mesh.material.color = new Color(0.75f, 0.75f, 0.75f);
                 oneTimeTriggered = true;
             }
         }

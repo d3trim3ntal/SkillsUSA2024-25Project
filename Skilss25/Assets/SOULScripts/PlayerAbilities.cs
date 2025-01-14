@@ -66,7 +66,7 @@ public class PlayerAbilities : MonoBehaviour
         // Press E to pick up and drop things
         if (Input.GetKeyDown(KeyCode.E) && !currentlyFixing)
         {
-            if (!currentlyHolding && playerMoveScript.grounded)
+            if (!currentlyHolding && (playerMoveScript.grounded || playerMoveScript.onPlatform))
             {
 
                 // Detects all pickups within range and essentially chooses one at random to pick up

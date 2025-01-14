@@ -64,7 +64,7 @@ public class PickupScript : MonoBehaviour
     void OnCollisionEnter(Collision c)
     {
         // Same as PlayerMovement
-        if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+        if (c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
         {
             transform.parent = c.gameObject.transform;
         }
@@ -72,7 +72,7 @@ public class PickupScript : MonoBehaviour
 
     void OnCollisionExit(Collision c)
     {
-        if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+        if (c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
         {
             transform.parent = null;
         }

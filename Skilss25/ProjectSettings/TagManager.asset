@@ -13,6 +13,7 @@ TagManager:
   - Wall
   - Item
   - ChangeSceneTrigger
+  - Platforms
   layers:
   - Default
   - TransparentFX

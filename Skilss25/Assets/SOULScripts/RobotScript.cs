@@ -239,7 +239,7 @@ public class RobotScript : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.CompareTag("Platform"))
+        if (c.gameObject.CompareTag("Platforms"))
         {
             transform.parent = c.gameObject.transform;
         }
@@ -252,7 +252,7 @@ public class RobotScript : MonoBehaviour
 
     void OnCollisionExit(Collision c)
     {
-        if (c.gameObject.CompareTag("Platform"))
+        if (c.gameObject.CompareTag("Platforms"))
         {
             transform.parent = null;
         }

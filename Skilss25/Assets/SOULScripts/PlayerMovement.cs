@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
         //jump
-        if (Input.GetKey(KeyCode.Space) && grounded && jumpable)
+        if (Input.GetKey(KeyCode.Space) && (grounded || onPlatform) && jumpable)
         {
             Debug.Log("Jump");
             jumpable = false;
@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         {
            
             // Make player follow platform or robot while it moves
-            if (c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+            if (c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
             {
                 transform.parent = c.gameObject.transform;
                 onPlatform = true;
@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
    void OnCollisionExit(Collision c)
    {
-       if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platform") || c.gameObject.CompareTag("Robot"))
+       if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
        {
            transform.parent = null;
            onPlatform = false;
