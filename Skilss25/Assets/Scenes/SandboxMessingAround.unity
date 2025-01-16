@@ -2609,6 +2609,7 @@ GameObject:
   - component: {fileID: 2012664550}
   - component: {fileID: 2012664549}
   - component: {fileID: 2012664552}
+  - component: {fileID: 2012664553}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2744,6 +2745,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012664553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012664545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6471cb20469c2e4b90283ff4d63d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
 --- !u!1001 &2029799590
 PrefabInstance:
   m_ObjectHideFlags: 0
