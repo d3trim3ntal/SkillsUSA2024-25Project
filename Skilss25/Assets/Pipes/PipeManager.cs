@@ -14,6 +14,13 @@ public class PipeManager : MonoBehaviour
     public bool active;
     Dictionary<int, SpinnyPipe[]> rows = new Dictionary<int, SpinnyPipe[]>();
     
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            toggleCam();
+        }
+    }
     private void Awake()
     {
         rows.Add(1, row1);
@@ -83,13 +90,14 @@ public class PipeManager : MonoBehaviour
             active = false;
             mainCam.SetActive(true);
             pipeCam.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
             active = true;
             mainCam.SetActive(false);
             pipeCam.SetActive(true);
-
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

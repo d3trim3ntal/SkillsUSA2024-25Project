@@ -50,23 +50,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        //Cursor keybind
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            if (movable)
-            {
-                followCam.enabled = false;
-                movable = false;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                followCam.enabled = true;
-
-                movable = true;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
+        
         // Get inputs
         horiInput = Input.GetAxisRaw("Horizontal");
         vertInput = Input.GetAxisRaw("Vertical");
