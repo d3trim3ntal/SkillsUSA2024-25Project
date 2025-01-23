@@ -1,6 +1,8 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -38,8 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown = 1f;
     public LayerMask ground;
 
-    
-
+    public Vector3 originalScale;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = speedInit;
         jumpForce = jumpForceInit;
         followCam = FindObjectOfType<CinemachineFreeLook>();
+        originalScale = transform.localScale;
     }
     void Update()
     {
@@ -57,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
         Vector3 extents = new Vector3(10f, 10f, 10f);
         Vector3 boxPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        grounded = Physics.BoxCast(boxPos - (transform.localScale.y * GetComponent<BoxCollider>().size.y * 0.5f - 0.25f) * Vector3.up, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground);
+        grounded = ((Physics.BoxCast(boxPos - (transform.localScale.y * GetComponent<BoxCollider>().size.y * 0.5f - 0.25f) * Vector3.up, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground)) || onPlatform);
         //make drag if the player is grounded
         if (grounded)
         {
@@ -148,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
        {
            transform.parent = null;
            onPlatform = false;
+            transform.localScale = originalScale;
        }
       
    }
