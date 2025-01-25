@@ -50,6 +50,7 @@ public class HealthBar : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         GameOver();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void UpdateHealthBar()

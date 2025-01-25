@@ -95,6 +95,7 @@ public class UISetsManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("SOULMM");
+        Time.timeScale = 1f;
     }
 
     public void TestLevel()
