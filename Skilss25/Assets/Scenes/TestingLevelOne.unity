@@ -1820,12 +1820,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 1786646601}
   objectHolding: {fileID: 0}
-  pickupRadius: 4
+  pickupRadius: 7
   currentlyHolding: 0
   currentRobot: {fileID: 0}
   currentlyFixing: 0
   robotUI: {fileID: 105564247}
-  interactRadius: 2
+  interactRadius: 4
 --- !u!114 &535280502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1856,6 +1856,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!65 &535280503
 BoxCollider:
   m_ObjectHideFlags: 0

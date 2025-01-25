@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
        {
            transform.parent = null;
            onPlatform = false;
-            transform.localScale = originalScale;
+           transform.localScale = originalScale;
        }
       
    }
