@@ -108,7 +108,7 @@ public class PlayerAbilities : MonoBehaviour
         GameObject[] interacts = GameObject.FindGameObjectsWithTag("Interactable");
         foreach (GameObject i in interacts)
         {
-            if ((transform.position - i.transform.position).magnitude < interactRadius && (!i.GetComponent<LeverTrigger>().oneTime || (i.GetComponent<LeverTrigger>().oneTime && !i.GetComponent<LeverTrigger>().oneTimeTriggered)))
+            if (((transform.position - i.transform.position).magnitude < interactRadius && (!i.GetComponent<LeverTrigger>().oneTime || (i.GetComponent<LeverTrigger>().oneTime && !i.GetComponent<LeverTrigger>().oneTimeTriggered))) && !currentlyHolding)
             {
                 i.GetComponent<LeverTrigger>().Display();
             }
