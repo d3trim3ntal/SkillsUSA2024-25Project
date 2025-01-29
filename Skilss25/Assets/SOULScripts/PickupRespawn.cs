@@ -19,6 +19,7 @@ public class PickupRespawn : MonoBehaviour
 
     public void Respawn()
     {
+        GetComponent<MeshRenderer>().enabled = false;
         StartCoroutine(RespawnPickup());
     }
 
@@ -26,5 +27,6 @@ public class PickupRespawn : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         transform.position = spawnPoint;
+        GetComponent<MeshRenderer>().enabled = true;
     }
 }
