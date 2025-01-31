@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //grounded = Physics.Raycast(transform.position, Vector3.down, RaycastDist, ground);
         Vector3 extents = new Vector3(10f, 10f, 10f);
         Vector3 boxPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        grounded = ((Physics.BoxCast(boxPos - (transform.localScale.y * GetComponent<BoxCollider>().size.y * 0.5f - 0.25f) * Vector3.up, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground)));
+        grounded = ((Physics.BoxCast(boxPos - (transform.localScale.y * boxCollider.size.y * 0.5f - 0.25f) * Vector3.up, new Vector3(boxCollider.size.x, 0, boxCollider.size.z), Vector3.down, transform.rotation, raycastDist, ground)));
         //make drag if the player is grounded
         if (grounded || onPlatform)
         {
@@ -130,23 +130,18 @@ public class PlayerMovement : MonoBehaviour
    {
         // Check whether or not the player is falling/moving up
 
-        if (Mathf.Abs(rb.velocity.y) < 0.05f)
+        if (c.gameObject.CompareTag("Platforms"))
         {
-           
-            // Make player follow platform or robot while it moves
-            if (c.gameObject.CompareTag("Platforms") && !grounded)
-            {
-                transform.parent = c.gameObject.transform;
-                onPlatform = true;
-            }
-            
+            transform.parent = c.gameObject.transform;
+            onPlatform = true;
+            grounded = false;
         }
        
    }
 
    void OnCollisionExit(Collision c)
    {
-       if (c.gameObject.CompareTag("Ground") || c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
+       if (c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
        {
            transform.parent = null;
            onPlatform = false;

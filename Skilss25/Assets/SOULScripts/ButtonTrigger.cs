@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ButtonTrigger : MonoBehaviour
@@ -10,6 +11,7 @@ public class ButtonTrigger : MonoBehaviour
     public int state = -1;
     public float requiredWeight = 1;
     public float currentWeightOn = 0;
+    public bool enoughWeight = false;
     public List<GameObject> objectsOn;
     // Start is called before the first frame update
     void Start()
@@ -20,19 +22,14 @@ public class ButtonTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*currentWeightOn = 0;
+        currentWeightOn = 0;
         foreach (GameObject g in objectsOn)
         {
             currentWeightOn += g.GetComponent<ButtonWeight>().weight;
-        }*/
-    }
-
-    void OnTriggerStay(Collider col)
-    {
-        // Checks what object is colliding, then executes similarly to lever
-        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot")) && currentWeightOn >= requiredWeight)
+        }
+        if (currentWeightOn >= requiredWeight)
         {
-
+            enoughWeight = true;
             if (GetComponent<PlatformTrigger>() != null)
             {
                 PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
@@ -40,6 +37,29 @@ public class ButtonTrigger : MonoBehaviour
             }
             state = 1;
             mesh.material.color = (Color.green);
+        }
+        else
+        {
+            enoughWeight = false;
+            state = -1;
+            mesh.material.color = (Color.red);
+            if (GetComponent<PlatformTrigger>() != null)
+            {
+                PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
+                platEvent.DirectionSet(objectConnected, state);
+            }
+        }
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        // Checks what object is colliding, then executes similarly to lever
+        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot")))
+        {
+            if (enoughWeight)
+            {
+    
+            }
             
         }
     }
@@ -50,24 +70,6 @@ public class ButtonTrigger : MonoBehaviour
         {
             //Weight Check
             objectsOn.Remove(col.gameObject);
-            currentWeightOn = 0;
-            foreach (GameObject g in objectsOn)
-            {
-                currentWeightOn += g.GetComponent<ButtonWeight>().weight;
-            }
-
-            if (currentWeightOn < requiredWeight)
-            {
-                state = -1;
-                mesh.material.color = (Color.red);
-                if (GetComponent<PlatformTrigger>() != null)
-                {
-                    PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
-                    platEvent.DirectionSet(objectConnected, state);
-                }
-            }
-            
-            
         }
     }
 
@@ -77,11 +79,6 @@ public class ButtonTrigger : MonoBehaviour
         {
             objectsOn.Add(col.gameObject);
             //WeightCheck
-            currentWeightOn = 0;
-            foreach (GameObject g in objectsOn)
-            {
-                currentWeightOn += g.GetComponent<ButtonWeight>().weight;
-            }
         }
     }
 
