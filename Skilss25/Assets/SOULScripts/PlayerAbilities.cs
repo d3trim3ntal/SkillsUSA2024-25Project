@@ -55,7 +55,16 @@ public class PlayerAbilities : MonoBehaviour
         {
             if ((transform.position - p.transform.position).magnitude < pickupRadius && !currentlyHolding)
             {
-                p.GetComponent<PickupScript>().Display();
+                if (p.GetComponent<PickupScript>().pickupWeight > 1)
+                {
+                    p.GetComponent<PickupScript>().Hide();
+
+                }
+                else
+                {
+                    p.GetComponent<PickupScript>().Display();
+
+                }
             }
             else
             {
@@ -88,7 +97,12 @@ public class PlayerAbilities : MonoBehaviour
                 {
                     if ((transform.position - p.transform.position).magnitude < pickupRadius)
                     {
-                        objectHolding = p;
+                        if (p.GetComponent<PickupScript>().pickupWeight <= 1)
+                        {
+                            objectHolding = p;
+
+                        }
+                        
                     }
                 }
                 objectHolding.GetComponent<PickupScript>().PickedUp(gameObject, playerModel);

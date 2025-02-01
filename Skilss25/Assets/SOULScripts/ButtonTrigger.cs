@@ -35,6 +35,10 @@ public class ButtonTrigger : MonoBehaviour
                 PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
                 platEvent.DirectionSet(objectConnected, state);
             }
+            else if (GetComponent<DoorTrigger>() != null)
+            {
+                GetComponent<DoorTrigger>().trigger(objectConnected, state);
+            }
             state = 1;
             mesh.material.color = (Color.green);
         }
@@ -47,6 +51,10 @@ public class ButtonTrigger : MonoBehaviour
             {
                 PlatformTrigger platEvent = GetComponent<PlatformTrigger>();
                 platEvent.DirectionSet(objectConnected, state);
+            }
+            else if (GetComponent<DoorTrigger>() != null)
+            {
+                GetComponent<DoorTrigger>().trigger(objectConnected, state);
             }
         }
     }

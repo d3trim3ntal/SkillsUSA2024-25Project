@@ -7,6 +7,7 @@ public class PickupScript : MonoBehaviour
     Rigidbody rb;
     // Whether or not it's picked up and object holding it
     public bool pickedUp;
+    public int pickupWeight = 1;
     GameObject objPicking;
     public GameObject displayText;
 
