@@ -244,7 +244,7 @@ public class RobotScript : MonoBehaviour
             transform.parent = c.gameObject.transform;
         }
 
-        if (c.gameObject.CompareTag("Wall"))
+        if (c.gameObject.CompareTag("Wall") || c.gameObject.CompareTag("Door"))
         {
             collided = true;
         }

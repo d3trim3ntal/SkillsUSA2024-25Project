@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PickupScript : MonoBehaviour
@@ -7,7 +9,6 @@ public class PickupScript : MonoBehaviour
     Rigidbody rb;
     // Whether or not it's picked up and object holding it
     public bool pickedUp;
-    public int pickupWeight = 1;
     GameObject objPicking;
     public GameObject displayText;
 
@@ -22,7 +23,14 @@ public class PickupScript : MonoBehaviour
     {
         if (pickedUp)
         {
-            transform.position = objPicking.transform.position - objPicking.transform.right * 1.5f + 2.5f * Vector3.up;
+            if (objPicking.GetComponent<PlayerAbilities>() != null)
+            {
+                transform.position = objPicking.transform.position - objPicking.transform.right * 1.5f + 2.5f * Vector3.up;
+            }
+            else
+            {
+                transform.position = objPicking.transform.position + objPicking.transform.up * 0.5f + objPicking.transform.forward * 0.75f;
+            }
             transform.Rotate(Vector3.up * 90 * Time.deltaTime);
         }
     }
@@ -43,14 +51,17 @@ public class PickupScript : MonoBehaviour
                 objPicking.GetComponent<PlayerAbilities>().objectHolding = null;
             }
         }
-        transform.parent = null;
-        transform.localScale = Vector3.one;
-        // Sets the "parent" as the model of gameobject picking this item up
-        objPicking = model;
-        pickedUp = true;
-        GetComponent<BoxCollider>().isTrigger = true;
-        // Prevent downward acceleration
-        rb.useGravity = false;
+        if ((GetComponent<ButtonWeight>().weight > 1 && gamer.GetComponent<RobotScript>() !=null) || (GetComponent<ButtonWeight>().weight <= 1))
+        {
+            transform.parent = null;
+            transform.localScale = Vector3.one;
+            // Sets the "parent" as the model of gameobject picking this item up
+            objPicking = model;
+            pickedUp = true;
+            GetComponent<BoxCollider>().isTrigger = true;
+            // Prevent downward acceleration
+            rb.useGravity = false;
+        }
 
     }
 
@@ -60,6 +71,8 @@ public class PickupScript : MonoBehaviour
         objPicking = null;
         pickedUp = false;
         rb.useGravity = true;
+        rb.velocity = Vector3.zero;
+        rb.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void OnCollisionEnter(Collision c)
@@ -76,6 +89,7 @@ public class PickupScript : MonoBehaviour
         if (c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
         {
             transform.parent = null;
+            rb.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

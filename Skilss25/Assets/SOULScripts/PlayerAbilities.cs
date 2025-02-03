@@ -53,18 +53,9 @@ public class PlayerAbilities : MonoBehaviour
 
         foreach (GameObject p in totalPicks)
         {
-            if ((transform.position - p.transform.position).magnitude < pickupRadius && !currentlyHolding)
+            if ((transform.position - p.transform.position).magnitude < pickupRadius && !currentlyHolding && p.GetComponent<ButtonWeight>().weight <= 1)
             {
-                if (p.GetComponent<PickupScript>().pickupWeight > 1)
-                {
-                    p.GetComponent<PickupScript>().Hide();
-
-                }
-                else
-                {
-                    p.GetComponent<PickupScript>().Display();
-
-                }
+                p.GetComponent<PickupScript>().Display();
             }
             else
             {
@@ -97,12 +88,7 @@ public class PlayerAbilities : MonoBehaviour
                 {
                     if ((transform.position - p.transform.position).magnitude < pickupRadius)
                     {
-                        if (p.GetComponent<PickupScript>().pickupWeight <= 1)
-                        {
-                            objectHolding = p;
-
-                        }
-                        
+                        objectHolding = p;
                     }
                 }
                 objectHolding.GetComponent<PickupScript>().PickedUp(gameObject, playerModel);

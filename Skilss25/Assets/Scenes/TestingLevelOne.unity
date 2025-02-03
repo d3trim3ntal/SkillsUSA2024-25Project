@@ -1367,6 +1367,7 @@ MonoBehaviour:
   state: -1
   requiredWeight: 1
   currentWeightOn: 0
+  enoughWeight: 0
   objectsOn: []
 --- !u!4 &264686054 stripped
 Transform:
@@ -2053,6 +2054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  collidingWith: []
 --- !u!1001 &547297961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6908,6 +6910,14 @@ PrefabInstance:
       propertyPath: connectedObject
       value: 
       objectReference: {fileID: 1362612004}
+    - target: {fileID: 3346224987182166954, guid: 80a8baa8837755f4b8a6295e609a00cf, type: 3}
+      propertyPath: connectedObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346224987182166954, guid: 80a8baa8837755f4b8a6295e609a00cf, type: 3}
+      propertyPath: connectedObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1482776487}
     - target: {fileID: 7822439886396931073, guid: 80a8baa8837755f4b8a6295e609a00cf, type: 3}
       propertyPath: m_RootOrder
       value: 1

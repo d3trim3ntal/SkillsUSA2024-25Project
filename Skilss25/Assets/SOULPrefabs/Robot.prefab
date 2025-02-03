@@ -5416,3 +5416,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  collidingWith: []
