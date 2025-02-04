@@ -5,13 +5,10 @@ using UnityEngine;
 public class DoorOpen : MonoBehaviour
 {
     public GameObject door;
-    public void open()
+    public bool openOrClosed = true;
+    public void Flip()
     {
-        door.SetActive(false);
-    }
-
-    public void close()
-    {
-        door.SetActive(true);
+        openOrClosed = !openOrClosed;
+        door.SetActive(openOrClosed);
     }
 }

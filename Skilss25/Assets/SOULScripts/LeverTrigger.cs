@@ -39,6 +39,10 @@ public class LeverTrigger : MonoBehaviour
                 {
                     GetComponent<CheckpointSet>().SetPlayerCheckpoint(transform.position);
                 }
+                if (GetComponent<DoorTrigger>() != null && connected.GetComponent<DoorOpen>() != null)
+                {
+                    GetComponent<DoorTrigger>().trigger(connected, currentState);
+                }
             }
             if (oneTime)
             {
