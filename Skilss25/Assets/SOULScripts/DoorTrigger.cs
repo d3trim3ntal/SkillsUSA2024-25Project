@@ -4,8 +4,29 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
+    DoorOpen open;
     public void trigger(GameObject door, int State)
     {
-        door.GetComponent<DoorOpen>().Flip();
+        //Assign open
+        if (open == null)
+        {
+            open = door.GetComponent<DoorOpen>();
+        }
+
+        //Make bool out of state int
+        bool stateBool;
+        if (State == 1)
+        {
+            stateBool = true;
+        }
+        else
+        {
+            stateBool = false;
+        }
+
+        if (open.openOrClosed == stateBool)
+        {
+            door.GetComponent<DoorOpen>().Flip();
+        }
     }
 }
