@@ -41,7 +41,7 @@ public class LeverTrigger : MonoBehaviour
                 }
                 if (GetComponent<DoorTrigger>() != null && connected.GetComponent<DoorOpen>() != null)
                 {
-                    GetComponent<DoorTrigger>().trigger(connected, currentState);
+                    GetComponent<DoorTrigger>().flip(connected);
                 }
             }
             if (oneTime)

@@ -26,7 +26,12 @@ public class DoorTrigger : MonoBehaviour
 
         if (open.openOrClosed == stateBool)
         {
-            door.GetComponent<DoorOpen>().Flip();
+            open.Flip();
         }
+    }
+
+    public void flip(GameObject door)
+    {
+        door.GetComponent<DoorOpen>().Flip();
     }
 }
