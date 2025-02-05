@@ -241,7 +241,7 @@ public class RobotScript : MonoBehaviour
     {
         if (c.gameObject.CompareTag("Platforms"))
         {
-            transform.parent = c.gameObject.transform;
+            transform.SetParent(c.gameObject.transform, true);
         }
 
         if (c.gameObject.CompareTag("Wall") || c.gameObject.CompareTag("Door"))

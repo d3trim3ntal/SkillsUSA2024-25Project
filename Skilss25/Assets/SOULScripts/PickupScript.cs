@@ -23,7 +23,7 @@ public class PickupScript : MonoBehaviour
     {
         if (pickedUp)
         {
-            if (objPicking.GetComponent<PlayerAbilities>() != null)
+            if (objPicking.transform.parent.GetComponent<PlayerAbilities>() != null)
             {
                 transform.position = objPicking.transform.position - objPicking.transform.right * 1.5f + 2.5f * Vector3.up;
             }
@@ -80,7 +80,7 @@ public class PickupScript : MonoBehaviour
         // Same as PlayerMovement
         if (c.gameObject.CompareTag("Platforms") || c.gameObject.CompareTag("Robot"))
         {
-            transform.parent = c.gameObject.transform;
+            transform.SetParent(c.gameObject.transform, true);
         }
     }
 

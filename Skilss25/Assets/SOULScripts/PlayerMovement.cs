@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (c.gameObject.CompareTag("Platforms"))
         {
-            transform.parent = c.gameObject.transform;
+            transform.SetParent(c.gameObject.transform, true);
             onPlatform = true;
             grounded = false;
         }
