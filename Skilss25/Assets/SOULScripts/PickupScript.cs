@@ -23,9 +23,12 @@ public class PickupScript : MonoBehaviour
     {
         if (pickedUp)
         {
-            if (objPicking.transform.parent.GetComponent<PlayerAbilities>() != null)
+            if (objPicking.GetComponent<RobotScript>() == null)
             {
-                transform.position = objPicking.transform.position - objPicking.transform.right * 1.5f + 2.5f * Vector3.up;
+                if (objPicking.transform.parent.GetComponent<PlayerAbilities>() != null)
+                {
+                    transform.position = objPicking.transform.position - objPicking.transform.right * 1.5f + 2.5f * Vector3.up;
+                }
             }
             else
             {
