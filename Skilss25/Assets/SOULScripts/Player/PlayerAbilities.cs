@@ -7,6 +7,8 @@ public class PlayerAbilities : MonoBehaviour
     PlayerMovement playerMoveScript;
     public GameObject playerModel;
 
+    public bool abletouse = true;
+
     // Variables for holding objects
     public  GameObject objectHolding = null;
     public float pickupRadius;
@@ -29,9 +31,13 @@ public class PlayerAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PickupFunctionality();
-        InteractFunctionality();
-        RobotFunctionality();
+        if (abletouse)
+        {
+            PickupFunctionality();
+            InteractFunctionality();
+            RobotFunctionality();
+        }
+        
     }
 
     void PickupFunctionality()

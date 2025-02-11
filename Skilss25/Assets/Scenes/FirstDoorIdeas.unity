@@ -2493,6 +2493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 168901179}
+  abletouse: 1
   objectHolding: {fileID: 0}
   pickupRadius: 4
   currentlyHolding: 0
