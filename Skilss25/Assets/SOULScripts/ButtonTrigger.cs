@@ -61,20 +61,12 @@ public class ButtonTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        // Checks what object is colliding, then executes similarly to lever
-        if ((col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot")))
-        {
-            if (enoughWeight)
-            {
-    
-            }
-            
-        }
+        
     }
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot"))
+        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot") || col.gameObject.CompareTag("Enemy"))
         {
             //Weight Check
             objectsOn.Remove(col.gameObject);
@@ -83,7 +75,7 @@ public class ButtonTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot"))
+        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Pickup") || col.gameObject.CompareTag("Robot") || col.gameObject.CompareTag("Enemy"))
         {
             objectsOn.Add(col.gameObject);
             //WeightCheck

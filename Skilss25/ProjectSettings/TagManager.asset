@@ -15,6 +15,7 @@ TagManager:
   - ChangeSceneTrigger
   - Platforms
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX
