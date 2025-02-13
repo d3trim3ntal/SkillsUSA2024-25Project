@@ -16,6 +16,7 @@ TagManager:
   - Platforms
   - Door
   - Enemy
+  - Marker
   layers:
   - Default
   - TransparentFX
